@@ -1,21 +1,35 @@
-//example api request: replace with your API request here in folder API
+const metricsUrl = 'http://192.168.0.7:3333/gpu/monitor';
 
-export const getUser = () => {
+export const getMetrics = () => {
   try {
-    return Promise.resolve({
-      status: 'success',
-      data: [
-        { id: 1, name: 'Fira' },
-        { id: 2, name: 'Nadia' },
-        { id: 3, name: 'Handy' },
-        { id: 4, name: 'Fakara' }
-      ]
-    })
+    return fetch(metricsUrl).then(res => res.json()).then(data => data)
+  } catch (e) {
+    return Promise.reject(e)
+  }
+}
+
+export const getMonitorMetrics = (monitor) => {
+  try {
+    fetch(`${metricsUrl}/${monitor}`).then(res => {
+      return res
+    })    
+  } catch (e) {
+    return Promise.reject(e)
+  }
+}
+
+export const getRigMetrics = (monitor, rig) => {
+  try {
+    fetch(`${metricsUrl}/rig/${rig}`).then(res => {
+      return res
+    })    
   } catch (e) {
     return Promise.reject(e)
   }
 }
 
 module.exports = {
-  getUser
+  getMetrics,
+  getMonitorMetrics,
+  getRigMetrics
 }

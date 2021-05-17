@@ -10,7 +10,7 @@ import {
 import styles from '../Home/Home.style'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-const Home = ({ navigation }) => {
+const Details = ({ navigation }) => {
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor={'#f9f9f9'} />
@@ -19,31 +19,19 @@ const Home = ({ navigation }) => {
         <View style={styles.outerWrapper}>
           <Icon name={'ios-settings'} size={100} color={'green'} />
           <View>
+            <TextInput></TextInput>
             <TouchableOpacity
-              onPress={() => Alert.alert('this is Profile Screen')}
               style={styles.buttonStyle}>
-              <Text style={styles.text}>
-                this is{' '}
-                <Text style={{ fontWeight: 'bold', color: 'green' }}>
-                  {' '}
-                  PROFILE{' '}
-                </Text>{' '}
-                screen
+              <Text style={{ fontWeight: 'bold', color: 'green', fontSize: 20 }}>
+                {' '}
+                Métricas:{' '}
               </Text>
             </TouchableOpacity>
           </View>
-        </View>
-        <View
-          style={{
-            alignContent: 'flex-end',
-            alignItems: 'flex-end',
-            padding: 10
-          }}>
-          <Text style={{ color: '#808080' }}>by Handi.dev</Text>
         </View>
       </SafeAreaView>
     </>
   )
 }
 
-export default Home
+export default Details

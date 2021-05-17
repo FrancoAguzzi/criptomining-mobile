@@ -1,4 +1,4 @@
-import { getUser } from '../../api/fakeApiUser'
+import { getMetrics, getMonitorMetrics, getRigMetrics } from '../../api/fakeApiUser'
 
 export const fetchUserRequest = () => {
   return {
@@ -19,10 +19,30 @@ export const fetchUserFail = () => {
   }
 }
 
-export const fetchDataUser = () => async dispatch => {
+export const fetchDataMetrics = () => async dispatch => {
   try {
     dispatch(fetchUserRequest())
-    const { data } = await getUser()
+    const data = await getMetrics()
+    dispatch(fetchUserSuccess(data))
+  } catch (error) {
+    dispatch(fetchUserFail())
+  }
+}
+
+export const fetchMonitorMetrics = () => async dispatch => {
+  try {
+    dispatch(fetchUserRequest())
+    const { data } = await getMonitorMetrics()
+    dispatch(fetchUserSuccess(data))
+  } catch (error) {
+    dispatch(fetchUserFail())
+  }
+}
+
+export const fetchRigMetrics = () => async dispatch => {
+  try {
+    dispatch(fetchUserRequest())
+    const { data } = await getRigMetrics()
     dispatch(fetchUserSuccess(data))
   } catch (error) {
     dispatch(fetchUserFail())
